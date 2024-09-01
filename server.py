@@ -1,20 +1,15 @@
 import socket
 import threading
-import time
 
-# time.sleep(3)
-# print("hello")
 HEADER=64
 PORT=5050
+# SERVER=''     (empty string means server will listen on all available interfaces,used when using ngrok etc.)
 # SERVER="192.168.11.1"(below line of code does the same)
 SERVER=socket.gethostbyname(socket.gethostname())
 
 ADDR=(SERVER,PORT)
 FORMAT='utf-8'
 DISCONNECT_MESSAGE="!DISCONNECT"
-
-
-
 
 
 server=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -41,7 +36,7 @@ def handle_client(conn,addr):
 
 def start():
     server.listen()
-    print(f"[LISTENING] Server is listening on {SERVER}")
+    print(f"[LISTENING] Server is listening on {SERVER}:{PORT}")
     while True:
        conn,addr = server.accept()
        thread=threading.Thread(target=handle_client,args=(conn,addr))
