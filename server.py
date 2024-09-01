@@ -4,7 +4,7 @@ import threading
 HEADER=64
 PORT=5050
 # SERVER=''     (empty string means server will listen on all available interfaces,used when using ngrok etc.)
-# SERVER="192.168.11.1"(below line of code does the same)
+# SERVER="local ip address"(below line of code does the same)
 SERVER=socket.gethostbyname(socket.gethostname())
 
 ADDR=(SERVER,PORT)
